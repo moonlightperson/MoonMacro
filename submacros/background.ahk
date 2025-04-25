@@ -1,14 +1,14 @@
 ﻿/*
-Natro Macro (https://github.com/moonlightperson/MoonMacro)
-Copyright © Natro Team (https://github.com/moonlightperson)
+Moon Macro (https://github.com/moonlightperson/MoonMacro)
+Copyright © Moon Team (https://github.com/moonlightperson)
 
-This file is part of Natro Macro. Our source code will always be open and available.
+This file is part of Moon Macro. Our source code will always be open and available.
 
-Natro Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Moon Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Natro Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
+Moon Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
 
-You should have received a copy of the license along with Natro Macro. If not, please redownload from an official source.
+You should have received a copy of the license along with Moon Macro. If not, please redownload from an official source.
 */
 
 #SingleInstance Force
@@ -27,7 +27,7 @@ SetWorkingDir A_ScriptDir "\.."
 
 if (A_Args.Length = 0)
 {
-	msgbox "This script needs to be run by Natro Macro! You are not supposed to run it manually."
+	msgbox "This script needs to be run by Moon Macro! You are not supposed to run it manually."
 	ExitApp
 }
 
@@ -102,9 +102,9 @@ nm_deathCheck(){
 		catch
 			return
 		if (result = 1) {
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 1, 1
-				Send_WM_COPYDATA("You Died", "natro_macro ahk_class AutoHotkey")
+				Send_WM_COPYDATA("You Died", "moon_macro ahk_class AutoHotkey")
 			}
 			LastDeathDetected := nowUnix()
 		}
@@ -122,9 +122,9 @@ nm_guidCheck(){
 		confirm:=0
 		if ((FieldGuidDetected = 0) && (state = 1)) {
 			FieldGuidDetected := 1
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 6, 1
-				Send_WM_COPYDATA("Detected: Guiding Star Active", "natro_macro ahk_class AutoHotkey")
+				Send_WM_COPYDATA("Detected: Guiding Star Active", "moon_macro ahk_class AutoHotkey")
 			}
 			LastFieldGuidDetected := nowUnix()
 		}
@@ -134,7 +134,7 @@ nm_guidCheck(){
 		if (confirm >= 5) {
 			confirm:=0
 			FieldGuidDetected := 0
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 6, 0
 			}
 		}
@@ -150,13 +150,13 @@ nm_popStarCheck(){
 	if (result = 1) { ;Has Pop
 		if (HasPopStar = 0){
 			HasPopStar := 1
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 7, 1
 			}
 		}
 		if (HasPopStar && (PopStarActive = 1)){
 			PopStarActive := 0
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 8, 0
 			}
 			if WinExist("StatMonitor.ahk ahk_class AutoHotkey") {
@@ -166,9 +166,9 @@ nm_popStarCheck(){
 	} else {
 		if (HasPopStar && (PopStarActive = 0) && (state = 1)){
 			PopStarActive := 1
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 8, 1
-				Send_WM_COPYDATA("Detected: Pop Star Active", "natro_macro ahk_class AutoHotkey")
+				Send_WM_COPYDATA("Detected: Pop Star Active", "moon_macro ahk_class AutoHotkey")
 			}
 			if WinExist("StatMonitor.ahk ahk_class AutoHotkey") {
 				PostMessage 0x5556, 1, 1
@@ -185,13 +185,13 @@ nm_scorchStarCheck(){
 	if (result = 1) { ;Has Scorch
 		if (HasScorchStar = 0){
 			HasScorchStar := 1
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 7, 1
 			}
 		}
 		if (HasScorchStar && (ScorchStarActive = 1)){
 			ScorchStarActive := 0
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 8, 0
 			}
 			if WinExist("StatMonitor.ahk ahk_class AutoHotkey") {
@@ -201,9 +201,9 @@ nm_scorchStarCheck(){
 	} else {
 		if (HasScorchStar && (ScorchStarActive = 0) && (state = 1)){
 			ScorchStarActive := 1
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 8, 1
-				Send_WM_COPYDATA("Detected: Scorch Star Active", "natro_macro ahk_class AutoHotkey")
+				Send_WM_COPYDATA("Detected: Scorch Star Active", "moon_macro ahk_class AutoHotkey")
 			}
 			if WinExist("StatMonitor.ahk ahk_class AutoHotkey") {
 				PostMessage 0x5556, 1, 1
@@ -220,7 +220,7 @@ nm_dayOrNight(){
 		return
 	if(((VBState=1) && ((nowUnix()-NightLastDetected)>400 || (nowUnix()-NightLastDetected)<0)) || ((VBState=2) && ((nowUnix()-VBLastKilled)>(600) || (nowUnix()-VBLastKilled)<0))) {
 		VBState:=0
-		if WinExist("natro_macro ahk_class AutoHotkey") {
+		if WinExist("moon_macro ahk_class AutoHotkey") {
 			PostMessage 0x5555, 3, 0
 		}
 	}
@@ -276,13 +276,13 @@ nm_dayOrNight(){
 		if((nowUnix()-NightLastDetected)>300 || (nowUnix()-NightLastDetected)<0) {
 			NightLastDetected:=nowUnix()
 			try IniWrite NightLastDetected, "settings\nm_config.ini", "Collect", "NightLastDetected"
-			if WinExist("natro_macro ahk_class AutoHotkey") {
+			if WinExist("moon_macro ahk_class AutoHotkey") {
 				PostMessage 0x5555, 2, NightLastDetected
-				Send_WM_COPYDATA("Detected: Night", "natro_macro ahk_class AutoHotkey")
+				Send_WM_COPYDATA("Detected: Night", "moon_macro ahk_class AutoHotkey")
 			}
 			if(((StingerCheck=1) && ((StingerDailyBonusCheck=0) || (nowUnix()-VBLastKilled)>79200) && VBState=0) || ((NightMemoryMatchCheck=1) && (nowUnix()-LastNightMemoryMatch)>28800)) {
 				VBState:=1 ;0=no VB, 1=searching for VB, 2=VB found
-				if WinExist("natro_macro ahk_class AutoHotkey") {
+				if WinExist("moon_macro ahk_class AutoHotkey") {
 					PostMessage 0x5555, 3, 1
 				}
 			}
@@ -406,7 +406,7 @@ nm_backpackPercent(){
 			}
 		}
 	}
-	if ((BackpackPercent != LastBackpackPercent) && WinExist("natro_macro ahk_class AutoHotkey")) {
+	if ((BackpackPercent != LastBackpackPercent) && WinExist("moon_macro ahk_class AutoHotkey")) {
 		PostMessage 0x5555, 4, BackpackPercent
 		LastBackpackPercent := BackpackPercent
 	}
@@ -433,7 +433,7 @@ nm_backpackPercentFilter(){
 	}
 	i:=Mod(i+1, 6)
 	if (BackpackPercentFiltered != LastBackpackPercentFiltered) {
-		if WinExist("natro_macro ahk_class AutoHotkey") {
+		if WinExist("moon_macro ahk_class AutoHotkey") {
 			PostMessage 0x5555, 5, BackpackPercentFiltered
 		}
 		LastBackpackPercentFiltered := BackpackPercentFiltered
@@ -470,8 +470,8 @@ nm_guidingStarDetect(){
 			catch
 				return
 			if (result = 1) {
-				if WinExist("natro_macro ahk_class AutoHotkey") {
-					Send_WM_COPYDATA(value, "natro_macro ahk_class AutoHotkey", 1)
+				if WinExist("moon_macro ahk_class AutoHotkey") {
+					Send_WM_COPYDATA(value, "moon_macro ahk_class AutoHotkey", 1)
 					LastGuidDetected := nowUnix()
 					break
 				}
@@ -497,8 +497,8 @@ nm_dailyReconnect(){
 	}
 	if((Number(ReconnectMin)=RCminUTC) && HourReady && (MacroState = 2)) {
 		LastDailyReconnect := nowUnix()
-		if WinExist("natro_macro ahk_class AutoHotkey") {
-			Send_WM_COPYDATA("Closing: Roblox, Daily Reconnect", "natro_macro ahk_class AutoHotkey")
+		if WinExist("moon_macro ahk_class AutoHotkey") {
+			Send_WM_COPYDATA("Closing: Roblox, Daily Reconnect", "moon_macro ahk_class AutoHotkey")
 			PostMessage 0x5557, 60
 		}
 	}
@@ -508,9 +508,9 @@ nm_EmergencyBalloon(){
 	static LastEmergency:=0
 	if ((EmergencyBalloonPingCheck = 1) && (ConvertBalloon != "Never") && (nowUnix() - LastEmergency > 60) && ((time := nowUnix() - LastConvertBalloon) > 2700) && (time < 3600))
 	{
-		if WinExist("natro_macro ahk_class AutoHotkey") {
+		if WinExist("moon_macro ahk_class AutoHotkey") {
 			duration := DurationFromSeconds(time, "m'm' ss's'")
-			Send_WM_COPYDATA("Detected: No Balloon Convert in " duration, "natro_macro ahk_class AutoHotkey")
+			Send_WM_COPYDATA("Detected: No Balloon Convert in " duration, "moon_macro ahk_class AutoHotkey")
 			LastEmergency := nowUnix()
 		}
 	}

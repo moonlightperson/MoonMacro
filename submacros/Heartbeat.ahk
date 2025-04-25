@@ -1,14 +1,14 @@
 ﻿/*
-Natro Macro (https://github.com/moonlightperson/MoonMacro)
-Copyright © Natro Team (https://github.com/moonlightperson)
+Moon Macro (https://github.com/moonlightperson/MoonMacro)
+Copyright © Moon Team (https://github.com/moonlightperson)
 
-This file is part of Natro Macro. Our source code will always be open and available.
+This file is part of Moon Macro. Our source code will always be open and available.
 
-Natro Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Moon Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Natro Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
+Moon Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
 
-You should have received a copy of the license along with Natro Macro. If not, please redownload from an official source.
+You should have received a copy of the license along with Moon Macro. If not, please redownload from an official source.
 */
 
 #NoTrayIcon
@@ -23,7 +23,7 @@ OnMessage(0x5556, nm_SetHeartbeat)
 
 LastRobloxWindow := LastStatusHeartbeat := LastMainHeartbeat := LastBackgroundHeartbeat := nowUnix()
 MacroState := 0
-path := '"' A_AhkPath '" "' A_ScriptDir '\natro_macro.ahk"'
+path := '"' A_AhkPath '" "' A_ScriptDir '\moon_macro.ahk"'
 
 Loop
 {
@@ -33,7 +33,7 @@ Loop
 		LastRobloxWindow := time
 	DetectHiddenWindows 1
 	; request heartbeat
-	if WinExist("natro_macro ahk_class AutoHotkey")
+	if WinExist("moon_macro ahk_class AutoHotkey")
 		PostMessage 0x5556
 	if WinExist("Status.ahk ahk_class AutoHotkey")
 		PostMessage 0x5556
@@ -51,7 +51,7 @@ Loop
 		Prev_MacroState := MacroState, MacroState := 0
 		Loop
 		{
-			while WinExist("natro_macro ahk_class AutoHotkey")
+			while WinExist("moon_macro ahk_class AutoHotkey")
 				ProcessClose WinGetPID()
 			for p in ComObjGet("winmgmts:").ExecQuery("SELECT * FROM Win32_Process WHERE Name LIKE '%Roblox%' OR CommandLine LIKE '%ROBLOXCORPORATION%'")
 				ProcessClose p.ProcessID
@@ -60,10 +60,10 @@ Loop
 
 			run path ' "' ForceStart '" "' A_ScriptHwnd '"'
 
-			if (WinWait("Natro ahk_class AutoHotkeyGUI", , 300) != 0)
+			if (WinWait("Moon ahk_class AutoHotkeyGUI", , 300) != 0)
 			{
 				Sleep 2000
-				Send_WM_COPYDATA("Error: " reason "`nSuccessfully restarted macro!", "natro_macro ahk_class AutoHotkey")
+				Send_WM_COPYDATA("Error: " reason "`nSuccessfully restarted macro!", "moon_macro ahk_class AutoHotkey")
 				Sleep 1000
 				LastRobloxWindow := LastStatusHeartbeat := LastMainHeartbeat := LastBackgroundHeartbeat := nowUnix()
 				break

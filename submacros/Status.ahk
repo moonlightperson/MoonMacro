@@ -1,14 +1,14 @@
 ﻿/*
-Natro Macro (https://github.com/moonlightperson/MoonMacro)
-Copyright © Natro Team (https://github.com/moonlightperson)
+Moon Macro (https://github.com/moonlightperson/MoonMacro)
+Copyright © Moon Team (https://github.com/moonlightperson)
 
-This file is part of Natro Macro. Our source code will always be open and available.
+This file is part of Moon Macro. Our source code will always be open and available.
 
-Natro Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Moon Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Natro Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
+Moon Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
 
-You should have received a copy of the license along with Natro Macro. If not, please redownload from an official source.
+You should have received a copy of the license along with Moon Macro. If not, please redownload from an official source.
 */
 
 #NoTrayIcon
@@ -29,7 +29,7 @@ CoordMode "Mouse", "Client"
 
 if (A_Args.Length = 0)
 {
-	MsgBox "This script needs to be run by Natro Macro! You are not supposed to run it manually."
+	MsgBox "This script needs to be run by Moon Macro! You are not supposed to run it manually."
 	ExitApp
 }
 
@@ -994,17 +994,17 @@ nm_command(command)
 					},
 					{
 						"name": "' commandPrefix 'stop",
-						"value": "Stop and reload Natro Macro (``F3``)",
+						"value": "Stop and reload Moon Macro (``F3``)",
 						"inline": true
 					},
 					{
 						"name": "' commandPrefix 'pause",
-						"value": "Pause/unpause Natro Macro (``F2``)",
+						"value": "Pause/unpause Moon Macro (``F2``)",
 						"inline": true
 					},
 					{
 						"name": "' commandPrefix 'start",
-						"value": "Start Natro Macro (``F1``)",
+						"value": "Start Moon Macro (``F1``)",
 						"inline": true
 					},
 					{
@@ -1092,7 +1092,7 @@ nm_command(command)
 
 		case "stop","reload":
 		DetectHiddenWindows 1
-		if WinExist("natro_macro ahk_class AutoHotkey")
+		if WinExist("moon_macro ahk_class AutoHotkey")
 		{
 			PostMessage 0x5550, 3
 			discord.SendEmbed("Stopping Macro...", 5066239, , , , id)
@@ -1107,7 +1107,7 @@ nm_command(command)
 		else
 		{
 			DetectHiddenWindows 1
-			if WinExist("natro_macro ahk_class AutoHotkey")
+			if WinExist("moon_macro ahk_class AutoHotkey")
 			{
 				PostMessage 0x5550, 2
 				discord.SendEmbed(((MacroState = 2) ? "Pausing" : "Unpausing") " Macro...", 5066239, , , , id)
@@ -1121,7 +1121,7 @@ nm_command(command)
 		if (MacroState = 0)
 		{
 			DetectHiddenWindows 1
-			if WinExist("natro_macro ahk_class AutoHotkey"){
+			if WinExist("moon_macro ahk_class AutoHotkey"){
 				PostMessage 0x5550, 1
 				discord.SendEmbed("Starting Macro...", 5066239, , , , id)
 			}
@@ -1138,11 +1138,11 @@ nm_command(command)
 		{
 			windowPid := WinGetPID()
 			DetectHiddenWindows 1
-			if WinExist("natro_macro ahk_class AutoHotkey")
-				natroPID := WinGetPID()
+			if WinExist("moon_macro ahk_class AutoHotkey")
+				moonPID := WinGetPID()
 			DetectHiddenWindows 0
-			if (windowPID = natroPID)
-				discord.SendEmbed("Cannot close Natro Macro window!", 16711731, , , , id)
+			if (windowPID = moonPID)
+				discord.SendEmbed("Cannot close Moon Macro window!", 16711731, , , , id)
 			else
 			{
 				title := WinGetTitle("ahk_id " hwnd)
@@ -1195,7 +1195,7 @@ nm_command(command)
 		{
 			delay := params[2] ? params[2] : 0
 			DetectHiddenWindows 1
-			if WinExist("natro_macro ahk_class AutoHotkey")
+			if WinExist("moon_macro ahk_class AutoHotkey")
 			{
 				PostMessage 0x5557, delay
 				discord.SendEmbed((delay > 0) ? ("Rejoining after " delay " seconds!") : "Rejoining...", 5066239, , , , id)
@@ -1213,7 +1213,7 @@ nm_command(command)
 
 		case "keep":
 		DetectHiddenWindows 1
-		if WinExist("natro_macro ahk_class AutoHotkey")
+		if WinExist("moon_macro ahk_class AutoHotkey")
 		{
 			try
 				result := SendMessage(0x5558, 1, , , , , , , 2000)
@@ -1240,7 +1240,7 @@ nm_command(command)
 
 		case "replace":
 		DetectHiddenWindows 1
-		if WinExist("natro_macro ahk_class AutoHotkey")
+		if WinExist("moon_macro ahk_class AutoHotkey")
 		{
 			try
 				result := SendMessage(0x5558, 2, , , , , , , 2000)
@@ -2035,7 +2035,7 @@ nm_command(command)
 			case "0","1","on","off":
 			state := (params[2] = "on") ? 1 : (params[2] = "off") ? 0 : params[2]
 			DetectHiddenWindows 1
-			if WinExist("natro_macro ahk_class AutoHotkey")
+			if WinExist("moon_macro ahk_class AutoHotkey")
 			{
 				try
 					result := SendMessage(0x5551, state, , , , , , , 2000)
@@ -2095,7 +2095,7 @@ nm_command(command)
 				Iniwrite "1", "settings\nm_config.ini", "Shrine", "ShrineIndex" n
 				Iniwrite "0", "settings\nm_config.ini", "Shrine", "LastShrine"
 				DetectHiddenWindows 1
-				if WinExist("natro_macro ahk_class AutoHotkey") {
+				if WinExist("moon_macro ahk_class AutoHotkey") {
 					PostMessage 0x5552, 230+n, 0 ; ShrineAmount
 					PostMessage 0x5553, 56+n, 9 ; ShrineIndex
 					PostMessage 0x5553, 54+n, 9 ; ShrineItem
@@ -2177,7 +2177,7 @@ nm_command(command)
 				Iniwrite 0, "settings\nm_config.ini", "Blender", "BlenderTime" n
 				IniWrite n, "settings\nm_config.ini", "Blender", "BlenderRot"
 				DetectHiddenWindows 1
-				if WinExist("natro_macro ahk_class AutoHotkey") {
+				if WinExist("moon_macro ahk_class AutoHotkey") {
 					PostMessage 0x5552, 232+n, 0 ; BlenderAmount
 					PostMessage 0x5552, 238+n, 0 ; BlenderTime
 					PostMessage 0x5553, 58+n, 8 ; BlenderIndex
@@ -2393,7 +2393,7 @@ nm_command(command)
 			discord.SendEmbed("Item ``" UI "`` is not valid", 5066239, , , , id)
 		else
 			DetectHiddenWindows 1
-			if WinExist("natro_macro ahk_class AutoHotkey")
+			if WinExist("moon_macro ahk_class AutoHotkey")
 				SendMessage(0x5559, ObjHasValue(items,closestItem.item),,,,,,,2000)	
 			DetectHiddenWindows 0
 
@@ -2762,7 +2762,7 @@ UpdateStr(var, value, section)
 	try %var% := value
 	IniWrite value, "settings\nm_config.ini", section, var
 	DetectHiddenWindows 1
-	if WinExist("natro_macro ahk_class AutoHotkey")
+	if WinExist("moon_macro ahk_class AutoHotkey")
 		PostMessage 0x5553, settings[var].enum, sections[section]
 	if WinExist("background.ahk ahk_class AutoHotkey")
 		PostMessage 0x5553, settings[var].enum, sections[section]
@@ -2774,7 +2774,7 @@ UpdateInt(var, value, section)
 	try %var% := value
 	IniWrite value, "settings\nm_config.ini", section, var
 	DetectHiddenWindows 1
-	if WinExist("natro_macro ahk_class AutoHotkey")
+	if WinExist("moon_macro ahk_class AutoHotkey")
 		PostMessage 0x5552, settings[var].enum, value
 	if WinExist("background.ahk ahk_class AutoHotkey")
 		PostMessage 0x5552, settings[var].enum, value

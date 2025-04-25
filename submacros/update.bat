@@ -16,7 +16,7 @@ set reset=%\e%[0m
 
 :: check existence of command line parameters
 if [%1]==[] (
-    echo %red%This script must be run from Natro Macro^^!%reset%
+    echo %red%This script must be run from Moon Macro^^!%reset%
     <nul set /p "=%red%Press any key to exit . . . %reset%"
     pause >nul
     exit
@@ -28,7 +28,7 @@ powershell -Command ""(New-Object Net.WebClient).DownloadFile('%1', '%temp%\%~nx
 echo %cyan%Download complete^^!%reset%
 echo:
 
-:: extract from %temp%/zip to Natro Macro directory
+:: extract from %temp%/zip to Moon Macro directory
 for %%a in ("%~2") do set "a2=%%~dpa"
 echo %purple%Extracting %~nx1...%reset%
 for /f delims^=^ EOL^= %%g in ('cscript //nologo "%~f0?.wsf" "%a2%" "%temp%\%~nx1"') do set "f=%%g"
@@ -73,13 +73,13 @@ echo:
         echo:
     )
     :: update autostart
-    for /f "usebackq tokens=2,* skip=2" %%l in (`reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "NatroMacro" 2^>nul`) do set "cmdline=%%m"
+    for /f "usebackq tokens=2,* skip=2" %%l in (`reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "MoonMacro" 2^>nul`) do set "cmdline=%%m"
     if not [!cmdline!] == [] (
         call set strtest=%%cmdline:%~2=%%
         if not "!strtest!"=="!cmdline!" (
             call set cmdline=%%cmdline:%~2=!folder!%%
             call set regcmd=%%cmdline:"=\"%%
-            reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "NatroMacro" /d "!regcmd!" /f > nul
+            reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "MoonMacro" /d "!regcmd!" /f > nul
             echo %blue%Updated auto-start entry^^!%reset%
             echo %blue%New command: !cmdline!%reset%
             echo:
@@ -89,7 +89,7 @@ echo:
         )
     )
 ) else (
-    echo %red%Error: Previous Natro Macro folder not found^^!%reset%
+    echo %red%Error: Previous Moon Macro folder not found^^!%reset%
     echo %red%Make sure to manually copy over settings, patterns, and paths.%reset%
     echo %red%Updated version: !folder!%reset%
     <nul set /p "=%red%Press any key to exit . . . %reset%"
@@ -98,11 +98,11 @@ echo:
 )
 
 :: countdown to macro start
-echo %green%Update complete^^! Starting Natro Macro in 10 seconds.%reset%
+echo %green%Update complete^^! Starting Moon Macro in 10 seconds.%reset%
 <nul set /p =%green%Press any key to skip . . . %reset%
 timeout /t 10 >nul
 
-start "" "!folder!\submacros\AutoHotkey32.exe" "!folder!\submacros\natro_macro.ahk"
+start "" "!folder!\submacros\AutoHotkey32.exe" "!folder!\submacros\moon_macro.ahk"
 exit)
 
 ----- Begin wsf script --->

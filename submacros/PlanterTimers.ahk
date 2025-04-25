@@ -1,14 +1,14 @@
 ﻿/*
-Natro Macro (https://github.com/moonlightperson/MoonMacro)
-Copyright © Natro Team (https://github.com/moonlightperson)
+Moon Macro (https://github.com/moonlightperson/MoonMacro)
+Copyright © Moon Team (https://github.com/moonlightperson)
 
-This file is part of Natro Macro. Our source code will always be open and available.
+This file is part of Moon Macro. Our source code will always be open and available.
 
-Natro Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Moon Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Natro Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
+Moon Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
 
-You should have received a copy of the license along with Natro Macro. If not, please redownload from an official source.
+You should have received a copy of the license along with Moon Macro. If not, please redownload from an official source.
 */
 
 #SingleInstance Force
@@ -318,7 +318,7 @@ Loop {
 	}
 
     TimersGui["dayOrNight"].Text := IniRead("settings\nm_config.ini", "Planters", "dayOrNight") " Detected"
-    try TimersGui["pstatus"].Text := ControlGetText("Static4", "Natro ahk_class AutoHotkeyGUI")
+    try TimersGui["pstatus"].Text := ControlGetText("Static4", "Moon ahk_class AutoHotkeyGUI")
 
 	Sleep (1100 - A_MSec)
 }
@@ -474,12 +474,12 @@ ba_setBlenderAmount(GuiCtrl, *){
         BlenderAmount%i% += (c = "Sub" && BlenderAmount%i% > 1) ? -1 : (c = "Add") ? 1 : 0
         TimersGui["BlenderTextAmount" i].Text := "(" BlenderCount%i% "/" BlenderAmount%i% ") [" ((BlenderIndex%i% = "Infinite") ? "∞" : BlenderIndex%i%) "]"
         IniWrite BlenderAmount%i%, "settings\nm_config.ini", "Blender", "BlenderAmount" i
-        if WinExist("natro_macro ahk_class AutoHotkey")
+        if WinExist("moon_macro ahk_class AutoHotkey")
             PostMessage 0x5552, 232+i, BlenderAmount%i% ; BlenderAmount
         If (LastBlenderRot = i) {
             TimerInterval := BlenderAmount%LastBlenderRot% * 300
             IniWrite TimerInterval, "settings\nm_config.ini", "Blender", "TimerInterval"
-            if WinExist("natro_macro ahk_class AutoHotkey")
+            if WinExist("moon_macro ahk_class AutoHotkey")
                 PostMessage 0x5552, 237, TimerInterval ; TimerInterval
         }
     }
@@ -508,7 +508,7 @@ ba_setBlenderData(GuiCtrl, *){
         IniWrite 1, "settings\nm_config.ini", "Blender", "BlenderIndex" i
         IniWrite 0, "settings\nm_config.ini", "Blender", "BlenderTime" i
         IniWrite i, "settings\nm_config.ini", "Blender", "BlenderRot"
-        if WinExist("natro_macro ahk_class AutoHotkey") {
+        if WinExist("moon_macro ahk_class AutoHotkey") {
             PostMessage 0x5552, 232+i, 0 ; BlenderAmount
             PostMessage 0x5552, 238+i, 0 ; BlenderTime
             PostMessage 0x5553, 58+i, 8 ; BlenderIndex
@@ -563,7 +563,7 @@ ba_AddBlenderItem(GuiCtrl?, *){
     IniWrite values.BAddamount, "settings\nm_config.ini", "Blender", "BlenderAmount" BlenderaddIndex
     IniWrite AddBlenderItem, "settings\nm_config.ini", "Blender", "BlenderItem" BlenderaddIndex
     IniWrite values.BAddindexOption ? "Infinite" : values.BAddindex, "settings\nm_config.ini", "Blender", "BlenderIndex" BlenderaddIndex
-    if WinExist("natro_macro ahk_class AutoHotkey") {
+    if WinExist("moon_macro ahk_class AutoHotkey") {
         PostMessage 0x5552, 232+BlenderaddIndex, values.BAddamount ; BlenderAmount
         PostMessage 0x5553, 58+BlenderaddIndex, 8 ; BlenderIndex
         PostMessage 0x5553, 61+BlenderaddIndex, 8 ; BlenderItem
@@ -577,7 +577,7 @@ ba_setShrineAmount(GuiCtrl, *){
         ShrineAmount%i% += (c = "Sub" && ShrineAmount%i% > 1) ? -1 : (c = "Add") ? 1 : 0
         TimersGui["ShrineTextAmount" i].Text := "(" ShrineAmount%i% ") [" ((ShrineIndex%i% = "Infinite") ? "∞" : ShrineIndex%i%) "]"
         IniWrite ShrineAmount%i%, "settings\nm_config.ini", "Shrine", "ShrineAmount" i
-        if WinExist("natro_macro ahk_class AutoHotkey")
+        if WinExist("moon_macro ahk_class AutoHotkey")
             PostMessage 0x5552, 230+i, ShrineAmount%i% ; ShrineAmount
     }
 }
@@ -601,7 +601,7 @@ ba_setShrineData(GuiCtrl, *){
         IniWrite 0, "settings\nm_config.ini", "Shrine", "ShrineAmount" i
         IniWrite 1, "settings\nm_config.ini", "Shrine", "ShrineIndex" i
         IniWrite 0, "settings\nm_config.ini", "Shrine", "LastShrine"
-        if WinExist("natro_macro ahk_class AutoHotkey") {
+        if WinExist("moon_macro ahk_class AutoHotkey") {
             PostMessage 0x5552, 230+i, 0 ; ShrineAmount
             PostMessage 0x5553, 56+i, 9 ; ShrineIndex
             PostMessage 0x5553, 54+i, 9 ; ShrineItem
@@ -655,7 +655,7 @@ ba_AddShrineItem(GuiCtrl?, *){
     IniWrite values.SAddamount, "settings\nm_config.ini", "Shrine", "ShrineAmount" ShrineaddIndex
     IniWrite AddShrineItem, "settings\nm_config.ini", "Shrine", "ShrineItem" ShrineaddIndex
     IniWrite values.SAddindexOption ? "Infinite" : values.SAddindex, "settings\nm_config.ini", "Shrine", "ShrineIndex" ShrineaddIndex
-    if WinExist("natro_macro ahk_class AutoHotkey") {
+    if WinExist("moon_macro ahk_class AutoHotkey") {
         PostMessage 0x5552, 230+ShrineaddIndex, values.SAddamount ; ShrineAmount
         PostMessage 0x5553, 56+ShrineaddIndex, 9 ; ShrineIndex
         PostMessage 0x5553, 54+ShrineaddIndex, 9 ; ShrineItem
@@ -681,7 +681,7 @@ UpdateStr(var, value)
 	try %var% := value
 	IniWrite value, "settings\nm_config.ini", "Planters", var
 	DetectHiddenWindows 1
-	if WinExist("natro_macro ahk_class AutoHotkey")
+	if WinExist("moon_macro ahk_class AutoHotkey")
 		PostMessage 0x5553, enum[var], 4
 }
 
@@ -727,7 +727,7 @@ UpdateInt(var, value)
 	try %var% := value
 	IniWrite value, "settings\nm_config.ini", "Planters", var
 	DetectHiddenWindows 1
-	if WinExist("natro_macro ahk_class AutoHotkey")
+	if WinExist("moon_macro ahk_class AutoHotkey")
 		PostMessage 0x5552, enum[var], value
 }
 

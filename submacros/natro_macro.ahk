@@ -1,23 +1,23 @@
 ﻿/*
-Natro Macro (https://github.com/moonlightperson/MoonMacro)
-Copyright © Natro Team (https://github.com/moonlightperson)
+Moon Macro (https://github.com/moonlightperson/MoonMacro)
+Copyright © Moon Team (https://github.com/moonlightperson)
 
-This file is part of Natro Macro. Our source code will always be open and available.
+This file is part of Moon Macro. Our source code will always be open and available.
 
-Natro Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation,
+Moon Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation,
 either version 3 of the License, or (at your option) any later version.
 
-Natro Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
+Moon Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
 
-You should have received a copy of the license along with Natro Macro. If not, please redownload from an official source.
+You should have received a copy of the license along with Moon Macro. If not, please redownload from an official source.
 */
 
 ;Compiler directives (currently not in use):
-;@Ahk2Exe-SetName Natro Macro
-;@Ahk2Exe-SetDescription Natro Macro
-;@Ahk2Exe-SetCompanyName Natro Team
-;@Ahk2Exe-SetCopyright Copyright © Natro Team
-;@Ahk2Exe-SetOrigFilename natro_macro.exe
+;@Ahk2Exe-SetName Moon Macro
+;@Ahk2Exe-SetDescription Moon Macro
+;@Ahk2Exe-SetCompanyName Moon Team
+;@Ahk2Exe-SetCopyright Copyright © Moon Team
+;@Ahk2Exe-SetOrigFilename moon_macro.exe
 #MaxThreads 255
 #Requires AutoHotkey v2.0
 #SingleInstance Force
@@ -66,11 +66,11 @@ ElevateScript() {
 		if (!A_IsAdmin || !(DllCall("GetCommandLine","Str") ~= " /restart(?!\S)"))
 			Try RunWait '*RunAs "' A_AhkPath '" /script /restart "' A_ScriptFullPath '"'
 		if !A_IsAdmin {
-			MsgBox "You must run Natro Macro as administrator in this folder!`nIf you don't want to do this, move the macro to a different folder (e.g. Downloads, Desktop)", "Error", 0x40010
+			MsgBox "You must run Moon Macro as administrator in this folder!`nIf you don't want to do this, move the macro to a different folder (e.g. Downloads, Desktop)", "Error", 0x40010
 			ExitApp
 		}
 		; elevated but still can't write, read-only directory?
-		MsgBox "You cannot run Natro Macro in this folder!`nTry moving the macro to a different folder (e.g. Downloads, Desktop)", "Error", 0x40010
+		MsgBox "You cannot run Moon Macro in this folder!`nTry moving the macro to a different folder (e.g. Downloads, Desktop)", "Error", 0x40010
 	}
 	else
 		file.Close()
@@ -81,7 +81,7 @@ ElevateScript()
 exe_path32 := A_AhkPath
 exe_path64 := (A_Is64bitOS && FileExist("submacros\AutoHotkey64.exe")) ? (A_WorkingDir "\submacros\AutoHotkey64.exe") : A_AhkPath
 
-; close any remnant running natro scripts and start heartbeat
+; close any remnant running moon scripts and start heartbeat
 CloseScripts(hb:=0) {
 	list := WinGetList("ahk_class AutoHotkey ahk_exe " exe_path32)
 	if (exe_path32 != exe_path64)
@@ -2124,13 +2124,13 @@ nm_AutoUpdateGUI(*)
 			UpdateGui.Destroy(), UpdateGui := ""
 	}
 	GuiClose()
-	UpdateGui := Gui("+Border +Owner" MainGui.Hwnd " -MinimizeBox", "Natro Macro Update")
+	UpdateGui := Gui("+Border +Owner" MainGui.Hwnd " -MinimizeBox", "Moon Macro Update")
 	UpdateGui.OnEvent("Close", GuiClose), UpdateGui.OnEvent("Escape", GuiClose)
 	UpdateGui.SetFont("s9 cDefault Norm", "Tahoma")
-	UpdateText := UpdateGui.Add("Text", "x20 w260 +Center +BackgroundTrans", "A newer version of Natro Macro was found!`nDo you want to update now?")
+	UpdateText := UpdateGui.Add("Text", "x20 w260 +Center +BackgroundTrans", "A newer version of Moon Macro was found!`nDo you want to update now?")
 
-	posW := TextExtent("Natro Macro v" VersionID " ⮕ v" LatestVer, UpdateText)
-	UpdateGui.Add("Text", "x" 149-posW//2 " y40 +BackgroundTrans", "Natro Macro v" VersionID " ⮕ ")
+	posW := TextExtent("Moon Macro v" VersionID " ⮕ v" LatestVer, UpdateText)
+	UpdateGui.Add("Text", "x" 149-posW//2 " y40 +BackgroundTrans", "Moon Macro v" VersionID " ⮕ ")
 	UpdateGui.Add("Text", "x+0 yp +c379e37 +BackgroundTrans", "v" LatestVer)
 
 	posW := TextExtent((size := Round(latest_release["assets"][1]["size"]/1048576, 2)) " MB // Downloads: " (downloads := latest_release["assets"][1]["download_count"]), UpdateText)
@@ -2250,7 +2250,7 @@ nm_MajorUpdateHelp(*)
 {
 	MsgBox "v" VersionID " to v" LatestVer " is a major version update.`n`n"
 	. "This means that backward compatibility of Paths and Patterns cannot be guaranteed, so they cannot be automatically copied.`n"
-	. "However, in Natro Macro, your Settings are guaranteed to be transferable to any new version, so that option remains enabled.`n`n"
+	. "However, in Moon Macro, your Settings are guaranteed to be transferable to any new version, so that option remains enabled.`n`n"
 	. "For more information, you can review the convention at https://semver.org/", "Major Update", 0x1040
 }
 
@@ -2258,10 +2258,10 @@ nm_MajorUpdateHelp(*)
 ; CREATE GUI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 OnExit(GetOut)
-MainGui := Gui((AlwaysOnTop ? "+AlwaysOnTop " : "") "+Border +OwnDialogs", "Natro Macro (Loading 0%)")
+MainGui := Gui((AlwaysOnTop ? "+AlwaysOnTop " : "") "+Border +OwnDialogs", "Moon Macro (Loading 0%)")
 WinSetTransparent 255-floor(GuiTransparency*2.55), MainGui
 MainGui.Show("x" GuiX " y" GuiY " w490 h275")
-SetLoadingProgress(percent) => MainGui.Title := "Natro Macro (Loading " Round(percent) "%)"
+SetLoadingProgress(percent) => MainGui.Title := "Moon Macro (Loading " Round(percent) "%)"
 MainGui.OnEvent("Close", (*) => ExitApp())
 MainGui.SetFont("s8 cDefault Norm", "Tahoma")
 MainGui.SetFont("w700")
@@ -2613,12 +2613,12 @@ MainGui.SetFont("s6 w700")
 MainGui.Add("Text", "x295 yp+6 +BackgroundTrans", "UTC")
 MainGui.SetFont("s8 cDefault Norm", "Tahoma")
 MainGui.Add("Button", "x315 yp-3 w10 h15 vReconnectTimeHelp Disabled", "?").OnEvent("Click", nm_ReconnectTimeHelp)
-(GuiCtrl := MainGui.Add("CheckBox", "x176 yp+24 w88 h15 vReconnectMessage Disabled Checked" ReconnectMessage, "Natro so broke")).Section := "Settings", GuiCtrl.OnEvent("Click", nm_saveConfig)
+(GuiCtrl := MainGui.Add("CheckBox", "x176 yp+24 w88 h15 vReconnectMessage Disabled Checked" ReconnectMessage, "Moon so broke")).Section := "Settings", GuiCtrl.OnEvent("Click", nm_saveConfig)
 hBM := Gdip_CreateHBITMAPFromBitmap(bitmaps["weary"])
 MainGui.Add("Picture", "+BackgroundTrans x269 yp-2 w20 h20", "HBITMAP:*" hBM)
 DllCall("DeleteObject", "ptr", hBM)
 Gdip_DisposeImage(bitmaps["weary"])
-MainGui.Add("Button", "x315 yp+2 w10 h15 vNatroSoBrokeHelp Disabled", "?").OnEvent("Click", nm_NatroSoBrokeHelp)
+MainGui.Add("Button", "x315 yp+2 w10 h15 vMoonSoBrokeHelp Disabled", "?").OnEvent("Click", nm_MoonSoBrokeHelp)
 (GuiCtrl := MainGui.Add("CheckBox", "x176 yp+18 w132 h15 vPublicFallback Disabled Checked" PublicFallback, "Fallback to Public Server")).Section := "Settings", GuiCtrl.OnEvent("Click", nm_saveConfig)
 MainGui.Add("Button", "x315 yp w10 h15 vPublicFallbackHelp Disabled", "?").OnEvent("Click", nm_PublicFallbackHelp)
 
@@ -3219,7 +3219,7 @@ SetLoadingProgress(100)
 nm_LockTabs(0)
 nm_setStatus("Startup", "UI")
 TabCtrl.Focus()
-MainGui.Title := "Natro Macro"
+MainGui.Title := "Moon Macro"
 MainGui["StartButton"].Enabled := 1
 MainGui["PauseButton"].Enabled := 1
 MainGui["StopButton"].Enabled := 1
@@ -3972,7 +3972,7 @@ nm_TabSettingsLock(){
 	MainGui["ReconnectHour"].Enabled := 0
 	MainGui["ReconnectMin"].Enabled := 0
 	MainGui["ReconnectTimeHelp"].Enabled := 0
-	MainGui["NatroSoBrokeHelp"].Enabled := 0
+	MainGui["MoonSoBrokeHelp"].Enabled := 0
 	MainGui["PublicFallbackHelp"].Enabled := 0
 	MainGui["NewWalkHelp"].Enabled := 0
 }
@@ -4013,7 +4013,7 @@ nm_TabSettingsUnLock(){
 	MainGui["ReconnectHour"].Enabled := 1
 	MainGui["ReconnectMin"].Enabled := 1
 	MainGui["ReconnectTimeHelp"].Enabled := 1
-	MainGui["NatroSoBrokeHelp"].Enabled := 1
+	MainGui["MoonSoBrokeHelp"].Enabled := 1
 	MainGui["PublicFallbackHelp"].Enabled := 1
 	MainGui["NewWalkHelp"].Enabled := 1
 }
@@ -6224,7 +6224,7 @@ nm_MPuffModeHelp(*){ ; disable auto harvest information for manual planters
 
 	To use this feature:
 	- Choose which slots to disable auto harvest for, depending on how many planters you wish to use for puffshrooms versus loot or nectar.
-	- If you have set up a Discord webhook and would like a ping and screenshot of the planter when full grown, select Planter Progress in Natro Status tab > Change Discord Settings.
+	- If you have set up a Discord webhook and would like a ping and screenshot of the planter when full grown, select Planter Progress in Moon Status tab > Change Discord Settings.
 	- When ready, either:
 	 - harvest manually in game, clear the planter in the Planter Timers pop-up (F5), and move to next cycle by pressing + in the planter tab
 	 - or do nothing if the planter is smoking and you wish to keep holding it.
@@ -7131,7 +7131,7 @@ nm_WebhookGUI(*){
 		global
 		local v := %var%
 		IniWrite v, "settings\nm_config.ini", "Status", var
-		if WinExist("natro_macro.ahk ahk_class AutoHotkey")
+		if WinExist("moon_macro.ahk ahk_class AutoHotkey")
 			PostMessage 0x5552, enum[var], v
 		if WinExist("Status.ahk ahk_class AutoHotkey")
 			PostMessage 0x5552, enum[var], v
@@ -7141,7 +7141,7 @@ nm_WebhookGUI(*){
 	{
 		global
 		IniWrite %var%, "settings\nm_config.ini", "Status", var
-		if WinExist("natro_macro.ahk ahk_class AutoHotkey")
+		if WinExist("moon_macro.ahk ahk_class AutoHotkey")
 			PostMessage 0x5553, str_enum[var], 7
 		if WinExist("Status.ahk ahk_class AutoHotkey")
 			PostMessage 0x5553, str_enum[var], 7
@@ -7261,7 +7261,7 @@ nm_AnnounceGuidWarn(GuiCtrl, *){
 nm_ResetConfig(*){
 	if (MsgBox("
 	(
-	Are you sure you want to reset ALL Natro settings?
+	Are you sure you want to reset ALL Moon settings?
 	This will set all settings (Gather, Planters, Boost, Quests, etc.) to the default AND reset all timers (Collect/Kill, Planters, etc.), as if you freshly started the macro.
 
 	If you want to proceed, click 'Yes'. Backup your 'settings' folder if you're unsure.
@@ -7543,12 +7543,12 @@ nm_ReconnectTimeHelp(*){
 	RECONNECT TIMES: " ReconnectTimeString
 	), "Coordinated Universal Time (UTC)", 0x40000 " Owner" MainGui.Hwnd
 }
-nm_NatroSoBrokeHelp(*){ ; so broke information
+nm_MoonSoBrokeHelp(*){ ; so broke information
 	MsgBox "
 	(
 	DESCRIPTION:
-	Enable this to have the macro say 'Natro so broke :weary:' in chat after it reconnects! This is a reference to e_lol's macros which type 'e_lol so pro :weary:' in chat.
-	)", "Natro so broke :weary:", 0x40000
+	Enable this to have the macro say 'Moon so broke :weary:' in chat after it reconnects! This is a reference to e_lol's macros which type 'e_lol so pro :weary:' in chat.
+	)", "Moon so broke :weary:", 0x40000
 }
 nm_PublicFallbackHelp(*){ ; public fallback information
 	MsgBox "
@@ -8067,7 +8067,7 @@ nm_GenerateBeeList(*)
 	}
 
 	; stringify the object into JSON format for export
-	str := '{"type":"natro",'
+	str := '{"type":"moon",'
 	for k,v in bee_data
 		str .= (v["amount"] > 0) ? ('"' k '":{"amount":' v["amount"] ',"gifted":' (v["gifted"] ? "true" : "false") '},') : ""
 	str := RTrim(str, ",") "}"
@@ -8154,7 +8154,7 @@ nm_HotkeyGUI(*){
 	HotkeyGui.Add("Hotkey", "x70 yp+19 w120 h18 vAutoClickerHotkeyEdit", AutoClickerHotkey).OnEvent("Change", nm_saveHotkey)
 	HotkeyGui.Add("Hotkey", "x70 yp+19 w120 h18 vTimersHotkeyEdit", TimersHotkey).OnEvent("Change", nm_saveHotkey)
 	HotkeyGui.Add("Button", "x30 yp+24 w140 h20", "Restore Defaults").OnEvent("Click", nm_ResetHotkeys)
-	(GuiCtrl := HotkeyGui.Add("CheckBox", "x10 y162 vShowOnPause Checked" ShowOnPause, "Show Natro on Pause")).Section := "Settings", GuiCtrl.OnEvent("Click", nm_saveConfig)
+	(GuiCtrl := HotkeyGui.Add("CheckBox", "x10 y162 vShowOnPause Checked" ShowOnPause, "Show Moon on Pause")).Section := "Settings", GuiCtrl.OnEvent("Click", nm_saveConfig)
 	HotkeyGui.Show("w190 h175")
 }
 nm_ResetHotkeys(*){
@@ -8249,16 +8249,16 @@ nm_AutoStartManager(*){
 	if A_IsAdmin
 		MsgBox "
 		(
-		Natro Macro has been run as administrator!
-		Auto-Start Manager can only launch Natro Macro on logon without admin privileges.
+		Moon Macro has been run as administrator!
+		Auto-Start Manager can only launch Moon Macro on logon without admin privileges.
 
-		If you need to run Natro Macro as admin, either:
-		- fix the reason why admin is required (reinstall Roblox unelevated, move Natro Macro folder)
+		If you need to run Moon Macro as admin, either:
+		- fix the reason why admin is required (reinstall Roblox unelevated, move Moon Macro folder)
 		- manually set up a Scheduled Task in Task Scheduler with 'Run with highest privileges' checked
 		- disable UAC (not recommended at all!)
 		)", "Auto-Start Manager", 0x40030 " T120 Owner" MainGui.Hwnd
 
-	if !(task := RegRead("HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "NatroMacro", ""))
+	if !(task := RegRead("HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "MoonMacro", ""))
 		validScript := 0, autostart := 0, delay := "None", status := 1
 	else
 	{
@@ -8288,11 +8288,11 @@ nm_AutoStartManager(*){
 	CenterText(ASMGui["StatusLabel"], ASMGui["StatusVal"], ASMGui["StatusLabel"])
 	ASMGui.SetFont("s9 cDefault Bold", "Tahoma")
 	ASMGui.Add("Text", "x0 y24 w" w " h36 vStatusText +Center c" ((status > 0) ? "Red" : "Green")
-		, ((status = 0) ? "Natro Macro will automatically start on user login using the settings below:"
-		: (status = 1) ? "No Natro Macro auto-start found!`nUse the 'Add' button below."
+		, ((status = 0) ? "Moon Macro will automatically start on user login using the settings below:"
+		: (status = 1) ? "No Moon Macro auto-start found!`nUse the 'Add' button below."
 		: "Your auto-start needs updating!`nUse 'Add' to create a new auto-start."))
 
-	ASMGui.Add("Text", "x0 yp+34 vNTLabel", "Natro Macro Path: ")
+	ASMGui.Add("Text", "x0 yp+34 vNTLabel", "Moon Macro Path: ")
 	ASMGui.Add("Text", "x0 yp vNTVal c" ((validScript) ? "Green" : "Red"), (status = 1) ? "None" : (validScript) ? "Valid" : "Invalid")
 	CenterText(ASMGui["NTLabel"], ASMGui["NTVal"], ASMGui["StatusText"])
 	ASMGui.Add("Text", "x0 yp+16 vASLabel", "Start Macro On Run: ")
@@ -8321,8 +8321,8 @@ AddButton(*)
 	global
 	local task, autostart, secs
 
-	if (task := RegRead("HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "NatroMacro", ""))
-		if (MsgBox("Are you sure?`nThis will overwrite the existing Natro Macro auto-start!", "Overwrite Existing Entry", 0x40024 " T30 Owner" ASMGui.Hwnd) != "Yes")
+	if (task := RegRead("HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "MoonMacro", ""))
+		if (MsgBox("Are you sure?`nThis will overwrite the existing Moon Macro auto-start!", "Overwrite Existing Entry", 0x40024 " T30 Owner" ASMGui.Hwnd) != "Yes")
 			return
 
 	autostart := ASMGui["AutoStartCheck"].Value
@@ -8332,12 +8332,12 @@ AddButton(*)
 		. ((autostart = 1) ?  ' "1"' : ' ""')		; autostart parameter
 		. ' ""'										; existing heartbeat PID
 		. ((secs > 0) ?  ' "' secs '"' : ' ""')		; delay before run (.bat)
-		, "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "NatroMacro"
+		, "REG_SZ", "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "MoonMacro"
 
 	ASMGui["Delay"].Text := "Delay Duration: " ((secs > 0) ? hmsFromSeconds(secs) : "None")
 	ASMGui["StatusVal"].SetFont("cGreen", "Tahoma"), ASMGui["StatusVal"].Text := "Active"
 	CenterText(ASMGui["StatusLabel"], ASMGui["StatusVal"], ASMGui["StatusLabel"])
-	ASMGui["StatusText"].SetFont("cGreen"), ASMGui["StatusText"].Text := "Natro Macro will automatically start on user login using the settings below:"
+	ASMGui["StatusText"].SetFont("cGreen"), ASMGui["StatusText"].Text := "Moon Macro will automatically start on user login using the settings below:"
 	ASMGui["NTVal"].SetFont("cGreen"), ASMGui["NTVal"].Text := "Valid"
 	CenterText(ASMGui["NTLabel"], ASMGui["NTVal"], ASMGui["StatusText"])
 	ASMGui["ASVal"].SetFont((autostart = 1) ? "cGreen" : "cRed"), ASMGui["ASVal"].Text := (autostart = 1) ? "Enabled" : "Disabled"
@@ -8347,7 +8347,7 @@ RemoveButton(*)
 {
 	global
 
-	try RegDelete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "NatroMacro"
+	try RegDelete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run", "MoonMacro"
 	catch
 	{
 		; show msgbox
@@ -8357,7 +8357,7 @@ RemoveButton(*)
 		ASMGui["Delay"].Text := "Delay Duration: None"
 		ASMGui["StatusVal"].SetFont("cRed", "Tahoma"), ASMGui["StatusVal"].Text := "Inactive"
 		CenterText(ASMGui["StatusLabel"], ASMGui["StatusVal"], ASMGui["StatusLabel"])
-		ASMGui["StatusText"].SetFont("cRed"), ASMGui["StatusText"].Text := "No Natro Macro auto-start found!`nUse the 'Add' button below."
+		ASMGui["StatusText"].SetFont("cRed"), ASMGui["StatusText"].Text := "No Moon Macro auto-start found!`nUse the 'Add' button below."
 		ASMGui["NTVal"].SetFont("cRed"), ASMGui["NTVal"].Text := "None"
 		CenterText(ASMGui["NTLabel"], ASMGui["NTVal"], ASMGui["StatusText"])
 		ASMGui["ASVal"].SetFont("cRed"), ASMGui["ASVal"].Text := "None"
@@ -9166,30 +9166,9 @@ nm_ContributorsImage(page:=1, contributors:=""){
 
 	if !IsSet(hBM1)
 	{
-		devs := [["bastianauryn",0xffa202c0,"779430642043191307"]
-			, ["zez_",0xff7df9ff,"253742141124116481"]
-			, ["ScriptingNoob",0xfffa01c5,"245481556355973121"]
-			, ["zaappiix",0xffa2a4a3,"747945550888042537"]
-			, ["xspx",0xfffc6600,"240431161191432193"]
-			, ["SuperDadof6 ❤",0xff8780ff,"278608676296589313"]
-			, ["baguetto",0xff3d85c6,"323507959957028874"]
-			, ["raychal71",0xffb7c9e2,"259441167068954624"]
-			, ["axetar",0xffec8fd0,"487989990937198602"]
-			, ["mis.c",0xffa174fe,"996025853286817815"]
-			, ["ninju",0xffe6a157,"727937385274540046"]]
+		devs := [["moonlight ❤",0xff8780ff,"695299229551427686"]]
 
-		testers := [["thatcasualkiwi",0xffff00ff,"334634052361650177"]
-			, ["ziz_jake",0xffa45ee9,"227604929806729217"]
-			, ["nick9",0xffdfdfdf,"700353887512690759"]
-			, ["heatsky",0xff3f8d4d,"725444258835726407"]
-			, ["valibreaz",0xff7aa22c,"244504077579452417"]
-			, ["randomuserhere",0xff2bc016,"744072472890179665"]
-			, ["chaxe",0xff794044,"529089693749608468"]
-			, ["_phucduc_",0xffffde48,"710486399744475136"]
-			, ["anniespony",0xff0096ff,"217700684835979265"]
-			, ["idote",0xfff47fff,"350433227380621322"]
-			, ["mahirishere",0xffa3bded,"724740667158429747"]
-			, ["Pinwheel",0xfff49fbc,"849962858774003712"]]
+		testers := [["thatcasualkiwi",0xffff00ff,"334634052361650177"]]
 
 		pBM := Gdip_CreateBitmap(244,212)
 		G := Gdip_GraphicsFromImage(pBM)
@@ -9695,7 +9674,7 @@ nm_priorityListGui(*) {
 	UpdateInt(name, value)
 	{
 		IniWrite value, "settings\nm_config.ini", "settings", name
-		if WinExist("natro_macro.ahk ahk_class AutoHotkey")
+		if WinExist("moon_macro.ahk ahk_class AutoHotkey")
 			PostMessage 0x5552, 366, value
 		if WinExist("Status.ahk ahk_class AutoHotkey")
 			PostMessage 0x5552, 366, value
@@ -9741,7 +9720,7 @@ copyLogFile(*) {
 	# Info -----------------------------------------------
 	OSVersion: ' os_version ' (' (A_Is64bitOS ? '64-bit' : '32-bit') ')
 	AutoHotkey Version: ' A_AhkVersion '; ' (A_AhkPath = A_WorkingDir '\submacros\AutoHotkey32.exe' ? "Using included AHK" : "Using installed AHK") '
-	Natro Version: ' VersionID '
+	Moon Version: ' VersionID '
 	Installation Path: ' StrReplace(A_WorkingDir, A_UserName, '<user>')
 	. (processorName ? '`r`nCPU: ' processorName : '')
 	. (RAMAmount ? '`r`nRAM: ' RAMAmount 'GB' : '')
@@ -16163,7 +16142,7 @@ nm_Walk(tiles, MoveKey1, MoveKey2:=0){ ; string form of the function which holds
 }
 nm_createWalk(movement, name:="", vars:="") ; this function generates the 'walk' code and runs it for a given 'movement' (AHK code string), using movespeed correction if 'NewWalk' is enabled and legacy movement otherwise
 {
-	; F13 is used by 'natro_macro.ahk' to tell 'walk' to complete a cycle
+	; F13 is used by 'moon_macro.ahk' to tell 'walk' to complete a cycle
 	; F14 is held down by 'walk' to indicate that the cycle is in progress, then released when the cycle is finished
 	; F16 can be used by any script to pause / unpause the walk script, when unpaused it will resume from where it left off
 
@@ -17218,7 +17197,7 @@ ShellRun(prms*)
 }
 nm_claimHiveSlot(){
 	global KeyDelay, FwdKey, RightKey, LeftKey, BackKey, ZoomOut, HiveSlot, HiveConfirmed, SC_E, SC_Esc, SC_R, SC_Enter, bitmaps, ReconnectMessage
-	static LastNatroSoBroke := 1
+	static LastMoonSoBroke := 1
 
 	GetBitmap() {
 		pBMScreen := Gdip_BitmapFromScreen(windowX+windowWidth//2-200 "|" windowY+offsetY "|400|125")
@@ -17356,10 +17335,10 @@ nm_claimHiveSlot(){
 	MainGui["HiveSlot"].Text := HiveSlot
 	IniWrite HiveSlot, "settings\nm_config.ini", "Settings", "HiveSlot"
 	nm_setStatus("Claimed", "Hive Slot " . HiveSlot)
-	;;;;; Natro so broke :weary:
-	if(ReconnectMessage && ((nowUnix()-LastNatroSoBroke)>3600)) { ;limit to once per hour
-		LastNatroSoBroke:=nowUnix()
-		Send "{Text}/[" A_Hour ":" A_Min "] Natro so broke :weary:`n"
+	;;;;; Moon so broke :weary:
+	if(ReconnectMessage && ((nowUnix()-LastMoonSoBroke)>3600)) { ;limit to once per hour
+		LastMoonSoBroke:=nowUnix()
+		Send "{Text}/[" A_Hour ":" A_Min "] Moon so broke :weary:`n"
 		sleep 250
 	}
 	MouseMove windowX+350, windowY+offsetY+100
@@ -21790,7 +21769,7 @@ start(*){
 		(
 		Your Roblox window is run as admin, but the macro is not!
 		This means the macro will be unable to send any inputs to Roblox.
-		You must either reinstall Roblox without administrative rights, or run Natro Macro as admin!
+		You must either reinstall Roblox without administrative rights, or run Moon Macro as admin!
 
 		NOTE: It is recommended to stop the macro now, as this issue also causes hotkeys to not work while Roblox is active."
 		)", "WARNING!!", 0x1030 " T60"
