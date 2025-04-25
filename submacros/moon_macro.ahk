@@ -2481,7 +2481,7 @@ MainGui.Add("Text", "x264 y43 w180 +wrap +backgroundtrans cWhite", "Thank you fo
 MainGui.Add("Button", "x440 y46 w18 h18 vContributorsLeft Disabled", "<").OnEvent("Click", nm_ContributorsPageButton)
 MainGui.Add("Button", "x464 y46 w18 h18 vContributorsRight Disabled", ">").OnEvent("Click", nm_ContributorsPageButton)
 
-try AsyncHttpRequest("GET", "https://raw.githubusercontent.com/moonlightperson/.github/main/data/contributors.txt", nm_ContributorsHandler, Map("accept", "application/vnd.github.v3.raw"))
+try AsyncHttpRequest("GET", "https://raw.githubusercontent.com/NatroTeam/.github/main/data/contributors.txt", nm_ContributorsHandler, Map("accept", "application/vnd.github.v3.raw"))
 SetLoadingProgress(27)
 
 ; MISC TAB
