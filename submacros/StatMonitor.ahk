@@ -1,14 +1,14 @@
 ﻿/*
-Moon Macro (https://github.com/moonlightperson/MoonMacro)
-Copyright © Moon Team (https://github.com/moonlightperson)
+Natro Macro (https://github.com/moonlightperson/MoonMacro)
+Copyright © Natro Team (https://github.com/NatroTeam)
 
-This file is part of Moon Macro. Our source code will always be open and available.
+This file is part of Natro Macro. Our source code will always be open and available.
 
-Moon Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+Natro Macro is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Moon Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
+Natro Macro is distributed in the hope that it will be useful. This does not give you the right to steal sections from our code, distribute it under your own name, then slander the macro.
 
-You should have received a copy of the license along with Moon Macro. If not, please redownload from an official source.
+You should have received a copy of the license along with Natro Macro. If not, please redownload from an official source.
 */
 
 #SingleInstance Force
@@ -99,7 +99,7 @@ bitmaps["pBMRefreshing"] := Gdip_BitmapFromBase64("iVBORw0KGgoAAAANSUhEUgAAAEAAA
 bitmaps["pBMSatisfying"] := Gdip_BitmapFromBase64("iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAqFBMVEUAAAD50+j51Of/////2//51Oj/1+v51Oj/5v341Of51Oj/3ez51Oj61ur51Oj51Oj71er71Oj51+z/3+/51Of40+j51Oj51Oj61ej71un41Oj41Oj51Oj/1+r/2Ov/1+v/1/L51Oj41Oj41Oj51ej61On51Oj61On51un51Oj61en51ej71er51Oj51ej41Oj71ur61ur51Oj51ej61ej51Oj51Oj50+cLW9dDAAAAN3RSTlMA/PkEB/UM8gninxbKLsJ0R0AoD+zq2oBrN+Xe1iIeGRLRvJuUirVdUKtlVDuvpm89NIV6YVjv1FflqgAAA0FJREFUWMPdV+t6ojAQdVDkUm6CCiIgeL/WWrV5/zfb7RpCMiFb21/77fnXjjOZc3JmjJ3/G90yP2791er4s/TI3dtOamgAzuT72f1LYmcfQP5AW5nfTH+576YaEArwLvT/Ydh9ivrkZBAO44AGci87l1/nz5IK+PzRvvcIlAuNGIviq+OPJ53wMOI+leU6/NRjffm7eLcMhHzNfqGV96OHIs7gL0JE/oiIcFwaepsSimqgzO8lQ5Q/2tQXc4KmqJJFwE5hBCJKwOeUgXnenh96KB8YgYEl1i1bBVgCKmBtawJzMWDcWoTsbrAAemxSbVYaClVhC4GKhTHVYERwLO7hfFM6xTrUpR0iYfqGCwxSFYH+AogEsPtIwR3+xLqg2iQGaUGK7LQdYgIBtiBuIRIaWGMLLWmLxZy0IxX21BHrPKbhaKEpCmg+74F3wA2YdAY/iALwysk4cxQNTDKihJNzDAzUwHsP36AMi7PCFVADF3o3I6LG8NDsgdd2l/R3n38Y1nTY1oiRNGvcQybc08BmnNrngxtu7RYt9TMbSddCzQX17cxm5uOId0Mu4PfYHOhokQXyst+BTIEVCDQUunckDMaSiM1WuaHqQH3Mo/euYS9vWTAGaRXIK2uChyp7UxqZQCWrUOKpmoesQAxEqnCIur8j3Z5p1ivLRm5dvLDie9knkL6e9/71Gi9XJRVhiZQ+m43CbSMLuq6BpoFHDzIXyO7cSsotogTE3VYN4FRwVyTsI4Wp3KnIwOev2ldPrVdLlYh2rYS9HmIR5ImJdugOZsK7olI2ULQzsO7iV9NGwWG4YSx1UcIcPW08xeIs62mci9ImzATICvjbhbX4IX5thdKwiRrhqSzEDtOb/HZ1hyyMljt74TDo6LWo8oLBdpZbCY15rS+9yJMUpB5CLxTINpQZQp5JT0SKy5jPHye0sAR3hF5YFOZS489n+TLuBifAtdm5FmdhZ1N21Nha7KAdO2e2hkb/dYD4IwycemNOGIFYb5xtT2hfSriP44yky3ilrCsrLp74vbGy6A1iD+rzQ/TcLx47PYXNmNnwOH4a550nYbr8sjh+dqRnyyNm/3S51dixD7nZ+THKsOh1/mH8At2tdh4Kz42QAAAAAElFTkSuQmCC")
 
 ; other
-bitmaps["pBMMoonLogo"] := Gdip_BitmapFromBase64("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")
+bitmaps["pBMNatroLogo"] := Gdip_BitmapFromBase64("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")
 #Include "%A_ScriptDir%\..\nm_image_assets\offset\bitmaps.ahk"
 
 
@@ -264,8 +264,8 @@ os_version := "cant detect os"
 for objItem in ComObjGet("winmgmts:").ExecQuery("SELECT * FROM Win32_OperatingSystem")
 	os_version := Trim(StrReplace(StrReplace(StrReplace(StrReplace(objItem.Caption, "Microsoft"), "Майкрософт"), "مايكروسوفت"), "微软"))
 
-; obtain moon version and other options (if exist)
-if ((A_Args.Length > 0) && (moon_version := A_Args[1]))
+; obtain natro version and other options (if exist)
+if ((A_Args.Length > 0) && (natro_version := A_Args[1]))
 {
 	; read information from settings\nm_config.ini
 	Loop 3
@@ -291,7 +291,7 @@ message := "Hourly Reports will start sending in **" DurationFromSeconds(60*(59-
 	. (ocr_enabled ? "OCR Status: **Enabled (" ocr_language ")**\nCurrent Honey: **" (start_honey ? FormatNumber(start_honey) : "N/A") "**"
 		: "OCR Status: **Disabled**\n**Honey Graphs will be empty.**")
 
-message .= (IsSet(moon_version) ? "\n\nMacro: **Moon v" moon_version "**\n"
+message .= (IsSet(natro_version) ? "\n\nMacro: **Natro v" natro_version "**\n"
 	. "Gather Fields: **" FieldName1 ", " FieldName2 ", " FieldName3 "**\n"
 	. "Consumables: **" ((StrLen(consumables) = 0) ? "None" : consumables) "**\n"
 	. "Planters: **" ((PlanterMode = 2) ? ("ON (" MaxAllowedPlanters " Planters)") : (PlanterMode = 1) ? ("ON (MANUAL)") : "OFF") "**\n"
@@ -376,10 +376,10 @@ graph_regions := Map("honey/sec", [regions["honey/sec"][1]+320,regions["honey/se
 	, "popstar", [regions["buffs"][1]+320,regions["buffs"][2]+2455,3600,110]
 	, "scorchstar", [regions["buffs"][1]+320,regions["buffs"][2]+2585,3600,110]
 	, "melody", [regions["buffs"][1]+320,regions["buffs"][2]+2715,3600,110]
-	, "bear", [regions["buffs"][1]+320,regions["buffs"][2]+2915,3600,110]
-	, "babylove", [regions["buffs"][1]+320,regions["buffs"][2]+3045,3600,110]
-	, "jbshare", [regions["buffs"][1]+320,regions["buffs"][2]+3175,3600,110]
-	, "guiding", [regions["buffs"][1]+320,regions["buffs"][2]+3305,3600,110]
+	, "bear", [regions["buffs"][1]+320,regions["buffs"][2]+2845,3600,110]
+	, "babylove", [regions["buffs"][1]+320,regions["buffs"][2]+2975,3600,110]
+	, "jbshare", [regions["buffs"][1]+320,regions["buffs"][2]+3105,3600,110]
+	, "guiding", [regions["buffs"][1]+320,regions["buffs"][2]+3235,3600,110]
 	, "honey", [stat_regions["lasthour"][1]+200,stat_regions["lasthour"][2]+650,1080,480]
 	, "honey12h", [stat_regions["session"][1]+200,stat_regions["session"][2]+734,1080,480])
 
@@ -512,12 +512,6 @@ Loop
 
 	; detect buffs every 6 seconds
 	DetectBuffs()
-
-	last_report := 0
-	if (last_report = 0) {
-		SendHourlyReport()
-		last_report := 1
-	}
 
 	; detect honey every minute if ocr is enabled
 	if ((ocr_enabled = 1) && ((Mod(time_value, 10) = 0) || (last_honey && time > last_honey + 580000000)))
@@ -872,7 +866,7 @@ DetectHoney()
 ********************************************************************************************************/
 SendHourlyReport()
 {
-	global pBM, regions, stat_regions, honey_values, honey_12h, backpack_values, buff_values, buff_colors, status_changes, start_time, start_honey, stats, latest_boost, latest_winds, graph_regions, version, moon_version, os_version, bitmaps, ocr_enabled, ocr_language
+	global pBM, regions, stat_regions, honey_values, honey_12h, backpack_values, buff_values, buff_colors, status_changes, start_time, start_honey, stats, latest_boost, latest_winds, graph_regions, version, natro_version, os_version, bitmaps, ocr_enabled, ocr_language
 	static honey_average := 0, honey_earned := 0, convert_time := 0, gather_time := 0, other_time := 0, stats_old := [["Total Boss Kills",0],["Total Vic Kills",0],["Total Bug Kills",0],["Total Planters",0],["Quests Done",0],["Disconnects",0]]
 
 	if (honey_values.Count > 0)
@@ -1498,7 +1492,7 @@ SendHourlyReport()
 	}
 
 	; section 6: info
-	; row 1: statmonitor and moon version
+	; row 1: statmonitor and natro version
 	y := stat_regions["info"][2]+60
 	pos := Gdip_TextToGraphics(G, "StatMonitor v" version " by SP", "s56 Center Bold c00ffffff x" stat_regions["info"][1]+stat_regions["info"][3]//2 " y" y, "Segoe UI")
 	x := SubStr(pos, 1, InStr(pos, "|", , , 1)-1)
@@ -1538,21 +1532,21 @@ SendHourlyReport()
 	y := stat_regions["info"][2]+300
 	Gdip_TextToGraphics(G, os_version, "s56 Center Bold cff04b4e4 x" stat_regions["info"][1]+stat_regions["info"][3]//2 " y" y, "Segoe UI")
 
-	; row 5: moon information
-	if IsSet(moon_version)
+	; row 5: natro information
+	if IsSet(natro_version)
 	{
 		y := stat_regions["info"][2]+380
 		x := stat_regions["info"][1]+stat_regions["info"][3]//2-50
 
-		pos := Gdip_TextToGraphics(G, "Moon v" moon_version, "s56 Left Bold c00ffffff x" x " y" y, "Segoe UI")
+		pos := Gdip_TextToGraphics(G, "Natro v" natro_version, "s56 Left Bold c00ffffff x" x " y" y, "Segoe UI")
 		x -= SubStr(pos, InStr(pos, "|", , , 2)+1, InStr(pos, "|", , , 3)-InStr(pos, "|", , , 2)-1)/2
-		pos := Gdip_TextToGraphics(G, "discord.gg/r55F5TF82Z", "s56 Left Bold c00ffffff x" x " y" y, "Segoe UI")
+		pos := Gdip_TextToGraphics(G, "discord.gg/natromacro", "s56 Left Bold c00ffffff x" x " y" y, "Segoe UI")
 		x -= SubStr(pos, InStr(pos, "|", , , 2)+1, InStr(pos, "|", , , 3)-InStr(pos, "|", , , 2)-1)/2
 
-		pos := Gdip_TextToGraphics(G, "discord.gg/r55F5TF82Z", "s56 Left Bold Underline cff3366cc x" x " y" y, "Segoe UI")
+		pos := Gdip_TextToGraphics(G, "discord.gg/natromacro", "s56 Left Bold Underline cff3366cc x" x " y" y, "Segoe UI")
 		x := SubStr(pos, 1, InStr(pos, "|", , , 1)-1)+SubStr(pos, InStr(pos, "|", , , 2)+1, InStr(pos, "|", , , 3)-InStr(pos, "|", , , 2)-1)
-		Gdip_DrawImage(G, bitmaps["pBMMoonLogo"], x+10, y, 80, 80)
-		Gdip_TextToGraphics(G, "Moon v" moon_version, "s56 Left Bold cffb47bd1 x" x+100 " y" y, "Segoe UI")
+		Gdip_DrawImage(G, bitmaps["pBMNatroLogo"], x+10, y, 80, 80)
+		Gdip_TextToGraphics(G, "Natro v" natro_version, "s56 Left Bold cffb47bd1 x" x+100 " y" y, "Segoe UI")
 	}
 
 	Gdip_DeleteGraphics(G)
