@@ -11781,7 +11781,7 @@ nm_RBPDelevel(){ ;Robo Bear Party De-level
 			nm_updateAction("Collect")
 
 			nm_Reset()
-			nm_setStatus("Traveling", "RBP De-Level" ((A_Index > 1) ? " (Attempt 2)" : ""))
+			nm_setStatus("Traveling", "<@607889925739905024> <@695299229551427686> RBP De-Level" ((A_Index > 1) ? " (Attempt 2)" : ""))
 
 			nm_gotoCollect("rbpdelevel")
 
