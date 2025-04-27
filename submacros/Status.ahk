@@ -690,7 +690,10 @@ nm_status(status)
 		}
 
 		; ping
-		content := ((criticalCheck = 1) && discordUID
+		if (state = "RBPDeLevel") {
+			content := "@everyone"
+		} else {
+			content := ((criticalCheck = 1) && discordUID
 			&& (((CriticalErrorPingCheck = 1) && (state = "Error"))
 			|| ((DisconnectPingCheck = 1) && InStr(stateString, "Disconnected"))
 			|| ((GameFrozenPingCheck = 1) && (InStr(stateString, "Resetting: Character") && (Mod(SubStr(objective, InStr(objective, " ")+1), 10) = 5)))
@@ -700,6 +703,8 @@ nm_status(status)
 			|| ((PlanterSSCheck = 1) && ((state = "Holding") && InStr(stateString, "Planter")))
 			|| ((state = "Obtained") && InStr(stateString, "Amulet"))))
 			? ("<@" discordUID ">") : ""
+		}
+		
 
 		; status update (embed)
 		message := StrReplace(StrReplace(StrReplace(StrReplace(SubStr(status, InStr(status, "]")+1), "\", "\\"), "`n", "\n"), Chr(9), "  "), "`r")
@@ -738,6 +743,7 @@ nm_status(status)
 	}
 	else
 		status_buffer.RemoveAt(1)
+
 
 	; extra: night detection announcement
 	if ((NightAnnouncementCheck = 1) && (PublicJoined = 0) && (stateString = "Detected: Night") && (StrLen(NightAnnouncementWebhook) > 0))

@@ -11779,9 +11779,10 @@ nm_RBPDelevel(){ ;Robo Bear Party De-level
 			offsetY := GetYOffset(hwnd)
 			GetRobloxClientPos(hwnd)
 			nm_updateAction("Collect")
-
+			
+			nm_setStatus("RBPDeLevel", "RBP De-Level" ((A_Index > 1) ? " (Attempt 2)" : ""))
 			nm_Reset()
-			nm_setStatus("Traveling", "@everyone RBP De-Level" ((A_Index > 1) ? " (Attempt 2)" : ""))
+			; nm_setStatus("Traveling", "RBP De-Level" ((A_Index > 1) ? " (Attempt 2)" : ""))
 
 			nm_gotoCollect("rbpdelevel")
 
